@@ -47,6 +47,22 @@ curl --silent -X POST http://127.0.0.1:8000/tasks/ --data '{ "title": "Проч�
 e }' | jq
 ```
 
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+```bash
+sudo docker run hello-world
+```
+
+```bash
+sudo usermod -aG docker $USER
+
+sudo systemctl restart docker
+
+su - $USER
+```
+
 ## Задание 2 | Докеризация приложения
 
 Dockerfile:
