@@ -29,6 +29,22 @@ echo \
 sudo apt-get update
 ```
 
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+```bash
+sudo docker run hello-world
+```
+
+```bash
+sudo usermod -aG docker $USER
+
+sudo systemctl restart docker
+
+su - $USER
+```
+
 ## Задание 1 | Запуск приложения
 
 ```bash
@@ -45,22 +61,6 @@ curl --silent http://127.0.0.1:8000/tasks/ | jq
 
 curl --silent -X POST http://127.0.0.1:8000/tasks/ --data '{ "title": "Прочитать книгу", "description": "Закончить чтение книги по FastAPI", "completed": fals
 e }' | jq
-```
-
-```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-```bash
-sudo docker run hello-world
-```
-
-```bash
-sudo usermod -aG docker $USER
-
-sudo systemctl restart docker
-
-su - $USER
 ```
 
 ## Задание 2 | Докеризация приложения
