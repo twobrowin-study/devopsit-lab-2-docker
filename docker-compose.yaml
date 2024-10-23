@@ -1,6 +1,6 @@
 services:
   tasks:
-    image: test:1.0.0
+    image: myimage
     build: .
     networks:
       - proxy
