@@ -2,3 +2,4 @@
 *.db
 *.tar.gz
 *.pem
+docker-deb
