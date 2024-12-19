@@ -50,21 +50,6 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-🚨 Для доступа из внутренней сети МГТУ им. Н.Э. Баумана в открытый доступ выложены актуальные версии пакетов:
-
-```bash
-mkdir docker-deb
-cd docker-deb
-
-# Скачивание пакетов
-for file in `cat ../docker-deb.lock`; do
-   curl -LO https://gitlab.bmstu.ru/api/v4/projects/698/packages/generic/docker-deb/2024-10-31/$file
-done
-
-# Установка 
-sudo dpkg -i *.deb
-```
-
 Проверка корректности работы Docker выполняется запуском простого контейнера:
 
 ```bash
