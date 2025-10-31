@@ -3,3 +3,4 @@
 *.tar.gz
 *.pem
 docker-deb
+Dockerfile

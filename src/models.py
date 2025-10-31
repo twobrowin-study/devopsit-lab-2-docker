@@ -1,5 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Boolean, Column, Integer, String
+
 from database import Base
+
 
 # Определяем модель Task
 class Task(Base):
