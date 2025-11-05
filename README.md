@@ -255,9 +255,9 @@ docker attach "[container_id|container_name]"
 
 Для работы на виртуальном сервере в закрытом контуре МГТУ им. Н.Э. Баумана следует скопировать туда файлы проекта:
 
-1. Создадим на удалённом сервере директорию проекта `mkdir lab-2-docker`
-
-2. Скопируем необходимые файлы на удалённый сервер `scp -r src requirements.txt nginx-default.template.config docker-compose.yaml devops@${VM_IP_ADDRESS}:~/lab-2-docker`
+```bash
+git clone https://gitlab.bmstu.ru/devops-dataops-intro/labs/lab-2-docker.git
+```
 
 ### Задание 1 | Запуск приложения
 
@@ -291,7 +291,7 @@ uvicorn main:app --host 0.0.0.0
 curl --silent http://${VM_IP_ADDRESS}:8000/tasks/ | jq
 
 # Создание нового задания
-curl --silent -X POST http://${VM_IP_ADDRESS}:8000/tasks/ --data '{ "title": "Прочитать книгу", "description": "Закончить чтение книги по FastAPI", "completed": false }' | jq
+curl --silent -X POST http://${VM_IP_ADDRESS}:8000/tasks/ -H 'Accept: application/json' -H 'Content-Type: application/json' --data '{ "title": "Прочитать книгу", "description": "Закончить чтение книги по FastAPI", "completed": false }' | jq
 ```
 
 🚨 В случае запроса из-вне закрытого контура МГТУ им. Н.Э. Баумана (только openvpn) следует добавлять для всех запросов curl флаг `--proxy http://openproxy.bmstu.ru:3128`

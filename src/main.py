@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi_standalone_docs import StandaloneDocs
 from sqlalchemy.orm import Session
 
 import crud
@@ -10,6 +11,7 @@ from database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+StandaloneDocs(app=app)
 
 
 # Зависимость для получения сессии базы данных
