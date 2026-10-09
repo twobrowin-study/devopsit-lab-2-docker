@@ -1,11 +1,15 @@
+import os
+
+import uvicorn
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi_standalone_docs import StandaloneDocs
 from sqlalchemy.orm import Session
 
-import crud
-import models
-import schemas
-from database import SessionLocal, engine
+from src import crud, models, schemas
+from src.database import SessionLocal, engine
+
+# Определение порта приложения из переменных окружения
+PORT = int(os.environ.get("PORT", "8000"))
 
 # Создание всех таблиц в базе данных
 models.Base.metadata.create_all(bind=engine)
@@ -52,3 +56,8 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     if db_task is None:
         raise HTTPException(status_code=404, detail="Task not found")
     return db_task
+
+
+if __name__ == "__main__":
+    print(f"Starting... {PORT=}")
+    uvicorn.run(app, host="0.0.0.0", port=PORT)

@@ -2,5 +2,6 @@
 *.db
 *.tar.gz
 *.pem
+.venv
 docker-deb
 Dockerfile

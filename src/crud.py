@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 
-import models
-import schemas
+from src import models, schemas
 
 
 # Функция для получения задачи по ID
@@ -16,9 +15,7 @@ def get_tasks(db: Session, skip: int = 0, limit: int = 10):
 
 # Функция для создания новой задачи
 def create_task(db: Session, task: schemas.TaskCreate):
-    db_task = models.Task(
-        title=task.title, description=task.description, completed=task.completed
-    )
+    db_task = models.Task(title=task.title, description=task.description, completed=task.completed)
     db.add(db_task)
     db.commit()
     db.refresh(db_task)

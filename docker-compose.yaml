@@ -1,19 +1,21 @@
 services:
-  tasks:
-    image: myimage
+  tasks: # Имя и адрес сервиса, следует обратить внимание как оно используется на 40 строчке
+    image: myimage # Версия образа приложения
     build: .
     networks:
       - proxy
     volumes:
+      # Путь к БД
       - "./src/test.db:/app/test.db"
     environment:
-      PORT: 8080
+      PORT: 8080 # Меняем порт на удобный для нас
 
   nginx:
+    # ‼️ При работе в закрытом контуре МГТУ использовать образ registry.gitlab.bmstu.ru/devops-dataops-intro/labs/lab-2-docker/nginx
     image: nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
+      - "8443:443"
     networks:
       - proxy
     configs:
@@ -35,6 +37,7 @@ services:
       NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".template"
       NGINX_ENVSUBST_OUTPUT_DIR: "/etc/nginx"
 
+      # Адрес обращения к сервису
       PASS: http://tasks:8000
 
 configs:
