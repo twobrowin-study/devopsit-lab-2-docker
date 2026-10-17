@@ -6,7 +6,7 @@ services:
       - proxy
     volumes:
       # Путь к БД
-      - "./src/test.db:/app/test.db"
+      - "./test.db:/app/test.db"
     environment:
       PORT: 8080 # Меняем порт на удобный для нас
 
@@ -38,7 +38,7 @@ services:
       NGINX_ENVSUBST_OUTPUT_DIR: "/etc/nginx"
 
       # Адрес обращения к сервису
-      PASS: http://tasks:8000
+      PASS: http://tasks:8080
 
 configs:
   nginx-default:
